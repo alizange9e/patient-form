@@ -12,12 +12,12 @@
     --bg: #0f1419; --surface: #1a2230; --surface2: #212d3d;
     --border: #2a3a50; --accent: #3b82f6; --accent-glow: rgba(59,130,246,0.25);
     --green: #22c55e; --green-glow: rgba(34,197,94,0.2); --red: #ef4444;
-    --orange: #f97316; --text: #e2e8f0; --muted: #7a90a8; --label: #94a3b8;
+    --text: #e2e8f0; --muted: #7a90a8; --label: #94a3b8;
   }
   body { font-family: 'Vazirmatn', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 16px; }
-  header { text-align: center; padding: 20px 0 16px; }
-  header h1 { font-size: 1.4rem; font-weight: 700; color: #fff; }
-  header p { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+  header { text-align: center; padding: 20px 0 14px; }
+  header h1 { font-size: 1.35rem; font-weight: 700; color: #fff; }
+  header p { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
   .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; margin-bottom: 12px; }
   .card-title { font-size: 0.72rem; font-weight: 600; color: var(--muted); letter-spacing: 1px; margin-bottom: 12px; text-transform: uppercase; }
   .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -28,37 +28,37 @@
   input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
   input.filled { border-color: var(--green); box-shadow: 0 0 0 2px var(--green-glow); }
 
-  /* Mode Toggle */
   .mode-toggle { display: flex; gap: 8px; margin-bottom: 14px; }
   .mode-btn { flex: 1; padding: 9px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface2); color: var(--muted); font-family: 'Vazirmatn', sans-serif; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
   .mode-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 
-  /* Chat / Conversation Mode */
   .chat-box { background: var(--surface2); border-radius: 10px; padding: 14px; margin-bottom: 12px; min-height: 60px; }
-  .chat-prompt { font-size: 0.85rem; color: var(--accent); font-weight: 600; margin-bottom: 6px; }
-  .chat-answer { font-size: 0.82rem; color: var(--text); opacity: 0.7; font-style: italic; }
-  .step-indicator { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
-  .step-dot { width: 28px; height: 6px; border-radius: 3px; background: var(--border); transition: background 0.3s; }
+  .chat-prompt { font-size: 0.88rem; color: var(--accent); font-weight: 600; margin-bottom: 6px; }
+  .chat-answer { font-size: 0.8rem; color: #aaa; font-style: italic; }
+  .step-indicator { display: flex; gap: 6px; margin-bottom: 12px; }
+  .step-dot { flex: 1; height: 5px; border-radius: 3px; background: var(--border); transition: background 0.3s; }
   .step-dot.done { background: var(--green); }
   .step-dot.current { background: var(--accent); }
 
-  /* Voice */
   .voice-section { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 6px 0; }
   .voice-hint { font-size: 0.74rem; color: var(--muted); text-align: center; line-height: 1.6; background: var(--surface2); border-radius: 10px; padding: 10px 14px; width: 100%; }
   .voice-hint span { color: var(--accent); font-weight: 600; }
-  .mic-btn { width: 68px; height: 68px; border-radius: 50%; border: none; background: var(--accent); color: #fff; font-size: 1.7rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 0.15s; }
+
+  .mic-btn { width: 70px; height: 70px; border-radius: 50%; border: none; background: var(--accent); color: #fff; font-size: 1.8rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 0.15s; position: relative; }
   .mic-btn:active { transform: scale(0.95); }
-  .mic-btn.listening { background: var(--red); animation: pulse 1.2s infinite; }
+  .mic-btn.recording { background: var(--red); animation: pulse 1.2s infinite; }
+  .mic-btn.processing { background: var(--muted); }
   @keyframes pulse {
     0% { box-shadow: 0 0 0 0 rgba(239,68,68,0.5); }
     70% { box-shadow: 0 0 0 16px rgba(239,68,68,0); }
     100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); }
   }
-  .status-text { font-size: 0.78rem; color: var(--muted); text-align: center; min-height: 18px; }
-  .status-text.active { color: var(--red); font-weight: 500; }
+  .status-text { font-size: 0.78rem; color: var(--muted); text-align: center; min-height: 20px; padding: 0 10px; line-height: 1.4; }
+  .status-text.recording { color: var(--red); font-weight: 600; }
+  .status-text.processing { color: var(--accent); }
   .status-text.success { color: var(--green); font-weight: 500; }
+  .status-text.error { color: var(--red); }
 
-  /* Actions */
   .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
   .btn { padding: 12px; border-radius: 10px; border: none; font-family: 'Vazirmatn', sans-serif; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: transform 0.1s; }
   .btn:active { transform: scale(0.97); }
@@ -66,38 +66,38 @@
   .btn-clear { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
   .btn-export { grid-column: 1 / -1; background: linear-gradient(135deg, #1d4ed8, #3b82f6); color: #fff; padding: 13px; }
 
-  /* Table */
   .table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); }
   table { width: 100%; border-collapse: collapse; font-size: 0.74rem; min-width: 640px; }
   thead tr { background: var(--surface2); }
-  th { padding: 10px 10px; color: var(--label); font-weight: 600; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--border); }
+  th { padding: 10px; color: var(--label); font-weight: 600; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--border); }
   td { padding: 9px 10px; border-bottom: 1px solid rgba(42,58,80,0.5); color: var(--text); white-space: nowrap; }
   tr:last-child td { border-bottom: none; }
   tr:hover td { background: rgba(59,130,246,0.05); }
-  .delete-btn { background: none; border: none; color: var(--red); cursor: pointer; font-size: 1rem; padding: 2px 6px; border-radius: 4px; opacity: 0.6; }
+  .delete-btn { background: none; border: none; color: var(--red); cursor: pointer; font-size: 1rem; padding: 2px 6px; opacity: 0.6; }
   .delete-btn:hover { opacity: 1; }
-  .empty-state { text-align: center; padding: 30px; color: var(--muted); font-size: 0.8rem; }
+  .empty-state { text-align: center; padding: 28px; color: var(--muted); font-size: 0.8rem; }
   .count-badge { display: inline-block; background: var(--accent); color: #fff; font-size: 0.65rem; font-weight: 700; padding: 2px 7px; border-radius: 20px; margin-right: 6px; vertical-align: middle; }
-  .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(60px); background: var(--green); color: #fff; padding: 10px 20px; border-radius: 30px; font-size: 0.82rem; font-weight: 600; transition: transform 0.3s ease; z-index: 999; white-space: nowrap; }
+  .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--green); color: #fff; padding: 10px 22px; border-radius: 30px; font-size: 0.82rem; font-weight: 600; transition: transform 0.3s; z-index: 999; white-space: nowrap; }
   .toast.show { transform: translateX(-50%) translateY(0); }
+
+  .ai-badge { display: inline-block; background: linear-gradient(135deg,#7c3aed,#3b82f6); color:#fff; font-size:0.65rem; font-weight:700; padding:2px 8px; border-radius:20px; margin-right:6px; vertical-align:middle; }
 </style>
 </head>
 <body>
 
 <header>
   <h1>📋 ثبت اطلاعات بیمار</h1>
-  <p>ورود صوتی مکالمه‌ای یا یکجا</p>
+  <p><span style="background:linear-gradient(135deg,#7c3aed,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700;">AI-Powered</span> — تشخیص هوشمند فارسی</p>
 </header>
 
-<!-- Mode Toggle -->
 <div class="card">
   <div class="card-title">حالت ورود</div>
   <div class="mode-toggle">
-    <button class="mode-btn active" id="modeChat" onclick="setMode('chat')">🗣 مکالمه‌ای (سوال به سوال)</button>
-    <button class="mode-btn" id="modeBulk" onclick="setMode('bulk')">⚡ یکجا (همه با هم)</button>
+    <button class="mode-btn active" id="modeChat" onclick="setMode('chat')">🗣 مکالمه‌ای</button>
+    <button class="mode-btn" id="modeBulk" onclick="setMode('bulk')">⚡ یکجا</button>
   </div>
 
-  <!-- Chat Mode UI -->
+  <!-- Chat Mode -->
   <div id="chatModeUI">
     <div class="step-indicator" id="stepIndicator"></div>
     <div class="chat-box">
@@ -105,67 +105,43 @@
       <div class="chat-answer" id="chatAnswer"></div>
     </div>
     <div class="voice-section">
-      <button class="mic-btn" id="micBtn" onclick="toggleVoice()">🎤</button>
+      <button class="mic-btn" id="micBtn" onclick="toggleRecord('chat')">🎤</button>
       <div class="status-text" id="statusText">برای شروع ضربه بزن</div>
     </div>
   </div>
 
-  <!-- Bulk Mode UI -->
+  <!-- Bulk Mode -->
   <div id="bulkModeUI" style="display:none">
     <div class="voice-section">
       <div class="voice-hint">
         بگو مثلاً:<br>
         <span>«علی رضایی — پدر حسین — کد ملی ۱۲۳۴۵۶۷۸۹۰ — پرونده ۴۵۶ — دکتر محمدی — تاریخ ۱۴۰۳/۰۳/۱۵»</span>
       </div>
-      <button class="mic-btn" id="micBtnBulk" onclick="toggleVoiceBulk()">🎤</button>
+      <button class="mic-btn" id="micBtnBulk" onclick="toggleRecord('bulk')">🎤</button>
       <div class="status-text" id="statusTextBulk">برای شروع ضربه بزن</div>
     </div>
   </div>
 </div>
 
-<!-- Fields -->
 <div class="card">
   <div class="card-title">اطلاعات بیمار</div>
   <div class="fields">
-    <div class="field">
-      <label>نام</label>
-      <input type="text" id="fname" placeholder="نام">
-    </div>
-    <div class="field">
-      <label>نام خانوادگی</label>
-      <input type="text" id="lname" placeholder="نام خانوادگی">
-    </div>
-    <div class="field full">
-      <label>نام پدر</label>
-      <input type="text" id="fathername" placeholder="نام پدر">
-    </div>
-    <div class="field">
-      <label>کد ملی</label>
-      <input type="text" id="natid" placeholder="۱۰ رقم">
-    </div>
-    <div class="field">
-      <label>شماره پرونده</label>
-      <input type="text" id="fileno" placeholder="شماره پرونده">
-    </div>
-    <div class="field full">
-      <label>نام پزشک</label>
-      <input type="text" id="doctor" placeholder="نام پزشک معالج">
-    </div>
-    <div class="field full">
-      <label>تاریخ پذیرش (شمسی)</label>
-      <input type="text" id="admdate" placeholder="مثلاً: ۱۴۰۳/۰۳/۱۵">
-    </div>
+    <div class="field"><label>نام</label><input type="text" id="fname" placeholder="نام"></div>
+    <div class="field"><label>نام خانوادگی</label><input type="text" id="lname" placeholder="نام خانوادگی"></div>
+    <div class="field full"><label>نام پدر</label><input type="text" id="fathername" placeholder="نام پدر"></div>
+    <div class="field"><label>کد ملی</label><input type="text" id="natid" placeholder="۱۰ رقم"></div>
+    <div class="field"><label>شماره پرونده</label><input type="text" id="fileno" placeholder="شماره پرونده"></div>
+    <div class="field full"><label>نام پزشک</label><input type="text" id="doctor" placeholder="نام پزشک معالج"></div>
+    <div class="field full"><label>تاریخ پذیرش (شمسی)</label><input type="text" id="admdate" placeholder="مثلاً: ۱۴۰۳/۰۳/۱۵"></div>
   </div>
 </div>
 
-<!-- Actions -->
 <div class="actions">
   <button class="btn btn-save" onclick="saveRecord()">✅ ذخیره ردیف</button>
   <button class="btn btn-clear" onclick="clearForm()">🗑 پاک کردن</button>
   <button class="btn btn-export" onclick="exportExcel()">📥 دانلود Excel</button>
 </div>
 
-<!-- Table -->
 <div class="card">
   <div class="card-title">
     <span id="countBadge" class="count-badge">0</span>
@@ -174,10 +150,7 @@
   <div class="table-wrap">
     <table>
       <thead>
-        <tr>
-          <th>#</th><th>نام</th><th>نام خانوادگی</th><th>نام پدر</th>
-          <th>کد ملی</th><th>شماره پرونده</th><th>نام پزشک</th><th>تاریخ پذیرش</th><th></th>
-        </tr>
+        <tr><th>#</th><th>نام</th><th>نام خانوادگی</th><th>نام پدر</th><th>کد ملی</th><th>شماره پرونده</th><th>نام پزشک</th><th>تاریخ پذیرش</th><th></th></tr>
       </thead>
       <tbody id="tableBody">
         <tr><td colspan="9" class="empty-state">هنوز اطلاعاتی ثبت نشده</td></tr>
@@ -191,40 +164,33 @@
 <script>
   let records = [];
   let currentMode = 'chat';
-  let recognition = null;
-  let isListening = false;
-
-  // ---- Conversational steps ----
-  const STEPS = [
-    { id: 'fname',       question: '👤 نام بیمار چیست؟',         hint: 'فقط نام (مثلاً: علی)' },
-    { id: 'lname',       question: '👤 نام خانوادگی؟',           hint: 'مثلاً: رضایی' },
-    { id: 'fathername',  question: '👨 نام پدر؟',                hint: 'مثلاً: حسین' },
-    { id: 'natid',       question: '🪪 کد ملی؟',                 hint: '۱۰ رقم' },
-    { id: 'fileno',      question: '📁 شماره پرونده؟',           hint: 'شماره پرونده بیمار' },
-    { id: 'doctor',      question: '🩺 نام پزشک معالج؟',         hint: 'مثلاً: دکتر محمدی' },
-    { id: 'admdate',     question: '📅 تاریخ پذیرش؟',            hint: 'مثلاً: ۱۴۰۳/۰۳/۱۵ یا بگو سوم خرداد ۱۴۰۳' },
-  ];
-
   let currentStep = 0;
+  let mediaRecorder = null;
+  let audioChunks = [];
+  let isRecording = false;
+
+  const STEPS = [
+    { id: 'fname',      question: '👤 نام بیمار چیست؟',       hint: 'فقط نام — مثلاً: علی' },
+    { id: 'lname',      question: '👤 نام خانوادگی؟',         hint: 'مثلاً: رضایی' },
+    { id: 'fathername', question: '👨 نام پدر؟',              hint: 'مثلاً: حسین' },
+    { id: 'natid',      question: '🪪 کد ملی؟',               hint: '۱۰ رقم بگو' },
+    { id: 'fileno',     question: '📁 شماره پرونده؟',         hint: 'شماره پرونده بیمار' },
+    { id: 'doctor',     question: '🩺 نام پزشک معالج؟',       hint: 'مثلاً: دکتر محمدی' },
+    { id: 'admdate',    question: '📅 تاریخ پذیرش شمسی؟',    hint: 'مثلاً: ۱۴۰۳/۰۳/۱۵ یا پانزدهم خرداد ۱۴۰۳' },
+  ];
 
   function setMode(mode) {
     currentMode = mode;
-    document.getElementById('modeChat').classList.toggle('active', mode === 'chat');
-    document.getElementById('modeBulk').classList.toggle('active', mode === 'bulk');
-    document.getElementById('chatModeUI').style.display = mode === 'chat' ? '' : 'none';
-    document.getElementById('bulkModeUI').style.display = mode === 'bulk' ? '' : 'none';
-    if (mode === 'chat') initChatMode();
-  }
-
-  function initChatMode() {
-    currentStep = 0;
-    renderStepIndicator();
-    showStep(0);
+    document.getElementById('modeChat').classList.toggle('active', mode==='chat');
+    document.getElementById('modeBulk').classList.toggle('active', mode==='bulk');
+    document.getElementById('chatModeUI').style.display = mode==='chat' ? '' : 'none';
+    document.getElementById('bulkModeUI').style.display = mode==='bulk' ? '' : 'none';
+    if (mode==='chat') { currentStep=0; renderStepIndicator(); showStep(0); }
   }
 
   function renderStepIndicator() {
-    const el = document.getElementById('stepIndicator');
-    el.innerHTML = STEPS.map((s, i) => `<div class="step-dot ${i < currentStep ? 'done' : i === currentStep ? 'current' : ''}"></div>`).join('');
+    document.getElementById('stepIndicator').innerHTML =
+      STEPS.map((s,i) => `<div class="step-dot ${i<currentStep?'done':i===currentStep?'current':''}"></div>`).join('');
   }
 
   function showStep(i) {
@@ -233,190 +199,252 @@
       document.getElementById('chatAnswer').textContent = '';
       return;
     }
-    const s = STEPS[i];
-    document.getElementById('chatPrompt').textContent = s.question;
-    document.getElementById('chatAnswer').textContent = s.hint;
+    document.getElementById('chatPrompt').textContent = STEPS[i].question;
+    document.getElementById('chatAnswer').textContent = STEPS[i].hint;
     renderStepIndicator();
   }
 
-  // ---- Speech ----
-  function makeRecognition(onResult) {
+  // ---- Audio Recording ----
+  async function toggleRecord(mode) {
+    if (isRecording) {
+      stopRecording();
+    } else {
+      await startRecording(mode);
+    }
+  }
+
+  async function startRecording(mode) {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      audioChunks = [];
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+      mediaRecorder.onstop = () => {
+        stream.getTracks().forEach(t => t.stop());
+        const blob = new Blob(audioChunks, { type: 'audio/webm' });
+        sendToWhisper(blob, mode);
+      };
+      mediaRecorder.start();
+      isRecording = true;
+
+      const btnId = mode==='chat' ? 'micBtn' : 'micBtnBulk';
+      const statusId = mode==='chat' ? 'statusText' : 'statusTextBulk';
+      document.getElementById(btnId).classList.add('recording');
+      document.getElementById(btnId).textContent = '⏹';
+      setStatus(statusId, '🔴 در حال ضبط... برای توقف بزن', 'recording');
+    } catch(e) {
+      setStatus(mode==='chat'?'statusText':'statusTextBulk', 'خطا: اجازه میکروفون داده نشد', 'error');
+    }
+  }
+
+  function stopRecording() {
+    if (mediaRecorder && isRecording) {
+      mediaRecorder.stop();
+      isRecording = false;
+      const mode = currentMode;
+      const btnId = mode==='chat' ? 'micBtn' : 'micBtnBulk';
+      const statusId = mode==='chat' ? 'statusText' : 'statusTextBulk';
+      document.getElementById(btnId).classList.remove('recording');
+      document.getElementById(btnId).classList.add('processing');
+      document.getElementById(btnId).textContent = '⏳';
+      setStatus(statusId, '🤖 هوش مصنوعی در حال پردازش...', 'processing');
+    }
+  }
+
+  // ---- Send to Claude AI for transcription + parsing ----
+  async function sendToWhisper(blob, mode) {
+    const btnId = mode==='chat' ? 'micBtn' : 'micBtnBulk';
+    const statusId = mode==='chat' ? 'statusText' : 'statusTextBulk';
+
+    try {
+      // Convert blob to base64
+      const base64 = await blobToBase64(blob);
+      const base64Data = base64.split(',')[1];
+
+      const systemPrompt = mode === 'chat'
+        ? `تو یک دستیار ثبت اطلاعات بیمار هستی. کاربر فقط یک مقدار گفته برای فیلد: "${STEPS[currentStep]?.id}". متن صوتی رو تشخیص بده و فقط مقدار خالص برگردون. برای کد ملی و شماره پرونده فقط اعداد برگردون. برای تاریخ فرمت YYYY/MM/DD شمسی برگردون. هیچ توضیح اضافه‌ای نده.`
+        : `تو یک دستیار ثبت اطلاعات بیمار هستی. متن صوتی رو تشخیص بده و اطلاعات رو استخراج کن. فقط JSON برگردون بدون هیچ توضیحی:
+{"fname":"","lname":"","fathername":"","natid":"","fileno":"","doctor":"","admdate":""}
+برای admdate فرمت YYYY/MM/DD شمسی استفاده کن. برای natid و fileno فقط اعداد انگلیسی.`;
+
+      const response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-6',
+          max_tokens: 1000,
+          system: systemPrompt,
+          messages: [{
+            role: 'user',
+            content: [{
+              type: 'document',
+              source: { type: 'base64', media_type: 'audio/webm', data: base64Data }
+            }, {
+              type: 'text',
+              text: mode === 'chat'
+                ? `این فایل صوتی رو تشخیص بده. فیلد مورد نظر: ${STEPS[currentStep]?.question}`
+                : 'این فایل صوتی رو تشخیص بده و اطلاعات بیمار رو استخراج کن.'
+            }]
+          }]
+        })
+      });
+
+      const data = await response.json();
+
+      // Check for API error
+      if (data.error) {
+        // Fallback to browser speech recognition
+        fallbackBrowserSpeech(mode);
+        return;
+      }
+
+      const text = data.content?.find(b => b.type==='text')?.text?.trim() || '';
+
+      if (mode === 'chat') {
+        handleChatResult(text);
+      } else {
+        handleBulkResult(text);
+      }
+
+      document.getElementById(btnId).classList.remove('processing');
+      document.getElementById(btnId).textContent = '🎤';
+
+    } catch(err) {
+      // Fallback to browser speech recognition
+      fallbackBrowserSpeech(mode);
+    }
+  }
+
+  // ---- Fallback: Browser Speech Recognition ----
+  function fallbackBrowserSpeech(mode) {
+    const btnId = mode==='chat' ? 'micBtn' : 'micBtnBulk';
+    const statusId = mode==='chat' ? 'statusText' : 'statusTextBulk';
+
+    document.getElementById(btnId).classList.remove('processing');
+    document.getElementById(btnId).textContent = '🎤';
+
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SR) { showToast('مرورگر پشتیبانی نمی‌کند'); return null; }
+    if (!SR) { setStatus(statusId, 'خطا در پردازش صدا', 'error'); return; }
+
+    setStatus(statusId, '🎤 دوباره بگو (حالت ساده)...', 'recording');
     const r = new SR();
     r.lang = 'fa-IR';
     r.continuous = false;
     r.interimResults = false;
-    r.onresult = e => onResult(e.results[0][0].transcript);
-    r.onerror = () => stopAll();
-    r.onend = () => stopAll();
-    return r;
+    r.onresult = e => {
+      const text = e.results[0][0].transcript;
+      document.getElementById(btnId).textContent = '🎤';
+      setStatus(statusId, '', '');
+      if (mode==='chat') handleChatResult(text);
+      else parseBulkText(text);
+    };
+    r.onerror = () => { setStatus(statusId, 'خطا در تشخیص صدا. دوباره امتحان کن', 'error'); document.getElementById(btnId).textContent='🎤'; };
+    r.onend = () => { document.getElementById(btnId).textContent='🎤'; };
+    r.start();
+    document.getElementById(btnId).classList.add('recording');
+    document.getElementById(btnId).textContent = '⏹';
   }
 
-  function stopAll() {
-    isListening = false;
-    ['micBtn','micBtnBulk'].forEach(id => {
-      const b = document.getElementById(id);
-      if (b) { b.classList.remove('listening'); b.textContent = '🎤'; }
-    });
-    ['statusText','statusTextBulk'].forEach(id => {
-      const s = document.getElementById(id);
-      if (s) { s.textContent = 'برای شروع ضربه بزن'; s.className = 'status-text'; }
-    });
-  }
-
-  // Chat mode mic
-  function toggleVoice() {
-    if (isListening) { recognition && recognition.stop(); return; }
-    recognition = makeRecognition(handleChatAnswer);
-    if (!recognition) return;
-    recognition.start();
-    isListening = true;
-    document.getElementById('micBtn').classList.add('listening');
-    document.getElementById('micBtn').textContent = '⏹';
-    document.getElementById('statusText').textContent = 'در حال گوش دادن...';
-    document.getElementById('statusText').className = 'status-text active';
-  }
-
-  function handleChatAnswer(text) {
-    stopAll();
-    if (currentStep >= STEPS.length) return;
+  function handleChatResult(text) {
+    const statusId = 'statusText';
+    if (!text || currentStep >= STEPS.length) return;
     const step = STEPS[currentStep];
+    let value = text.trim().replace(/^["']|["']$/g,'');
 
-    let value = text.trim();
-
-    // For date step: try to parse
-    if (step.id === 'admdate') {
-      value = parseDateFromText(text) || text.trim();
-    }
-    // For national id / file no: extract digits only
+    // Clean up numbers
     if (step.id === 'natid' || step.id === 'fileno') {
-      const digits = text.replace(/[^۰-۹\d]/g, '');
-      if (digits) value = toEnglishNum(digits);
+      value = value.replace(/[^0-9۰-۹]/g,'');
+      value = toEN(value);
     }
 
     fillField(step.id, value);
     document.getElementById('chatAnswer').textContent = '✅ ثبت شد: ' + value;
-    document.getElementById('statusText').textContent = '';
-
+    setStatus(statusId, '', 'success');
     currentStep++;
-    setTimeout(() => showStep(currentStep), 800);
+    setTimeout(() => showStep(currentStep), 700);
   }
 
-  // Bulk mode mic
-  let recBulk = null;
-  function toggleVoiceBulk() {
-    if (isListening) { recBulk && recBulk.stop(); return; }
-    recBulk = makeRecognition(text => {
-      stopAll();
-      parseVoiceBulk(text);
-    });
-    if (!recBulk) return;
-    recBulk.start();
-    isListening = true;
-    document.getElementById('micBtnBulk').classList.add('listening');
-    document.getElementById('micBtnBulk').textContent = '⏹';
-    document.getElementById('statusTextBulk').textContent = 'در حال گوش دادن...';
-    document.getElementById('statusTextBulk').className = 'status-text active';
+  function handleBulkResult(text) {
+    // Try JSON parse first
+    try {
+      const clean = text.replace(/```json|```/g,'').trim();
+      const obj = JSON.parse(clean);
+      if (obj.fname) fillField('fname', obj.fname);
+      if (obj.lname) fillField('lname', obj.lname);
+      if (obj.fathername) fillField('fathername', obj.fathername);
+      if (obj.natid) fillField('natid', obj.natid);
+      if (obj.fileno) fillField('fileno', obj.fileno);
+      if (obj.doctor) fillField('doctor', obj.doctor);
+      if (obj.admdate) fillField('admdate', obj.admdate);
+      setStatus('statusTextBulk', '✅ اطلاعات استخراج شد', 'success');
+    } catch {
+      // Fallback: try text parsing
+      parseBulkText(text);
+    }
   }
 
-  function parseVoiceBulk(text) {
-    document.getElementById('statusTextBulk').textContent = 'پردازش: ' + text;
-    document.getElementById('statusTextBulk').className = 'status-text success';
-
-    let fname='', lname='', fathername='', natid='', fileno='', doctor='', admdate='';
-
+  function parseBulkText(text) {
     const natMatch = text.match(/کد\s*ملی\s*([۰-۹\d]+)/);
-    if (natMatch) natid = toEnglishNum(natMatch[1]);
-
-    const fileMatch = text.match(/(?:پرونده|شماره پرونده)\s*([۰-۹\d]+)/);
-    if (fileMatch) fileno = toEnglishNum(fileMatch[1]);
-
-    const docMatch = text.match(/(?:دکتر|پزشک(?:\s*معالج)?)\s+([^\u060C،,—\-]+)/);
-    if (docMatch) doctor = docMatch[1].trim();
-    else {
-      const docMatch2 = text.match(/(?:نام پزشک)\s+([^\u060C،,—\-]+)/);
-      if (docMatch2) doctor = docMatch2[1].trim();
-    }
-
-    const dateVal = parseDateFromText(text);
-    if (dateVal) admdate = dateVal;
-
-    // Father name
+    if (natMatch) fillField('natid', toEN(natMatch[1]));
+    const fileMatch = text.match(/(?:پرونده)\s*([۰-۹\d]+)/);
+    if (fileMatch) fillField('fileno', toEN(fileMatch[1]));
+    const docMatch = text.match(/(?:دکتر|پزشک)\s+([^\u060C،,—\-]+)/);
+    if (docMatch) fillField('doctor', docMatch[1].trim());
     const fatherMatch = text.match(/(?:پدر|نام پدر)\s+([^\u060C،,—\-کد]+)/);
-    if (fatherMatch) fathername = fatherMatch[1].trim().split(/\s+/).slice(0,2).join(' ');
-
-    // Name: text before first keyword
-    const nameChunk = text.split(/کد\s*ملی|پرونده|دکتر|پزشک|تاریخ|پدر/)[0]
-      .replace(/[—\-،,]/g,' ').trim();
+    if (fatherMatch) fillField('fathername', fatherMatch[1].trim().split(/\s+/).slice(0,2).join(' '));
+    const dateVal = parseDateText(text);
+    if (dateVal) fillField('admdate', dateVal);
+    const nameChunk = text.split(/کد\s*ملی|پرونده|دکتر|پزشک|تاریخ|پدر/)[0].replace(/[—\-،,]/g,' ').trim();
     const parts = nameChunk.split(/\s+/).filter(Boolean);
-    if (parts.length >= 2) { fname = parts[0]; lname = parts.slice(1).join(' '); }
-    else if (parts.length === 1) fname = parts[0];
-
-    if (fname) fillField('fname', fname);
-    if (lname) fillField('lname', lname);
-    if (fathername) fillField('fathername', fathername);
-    if (natid) fillField('natid', natid);
-    if (fileno) fillField('fileno', fileno);
-    if (doctor) fillField('doctor', doctor);
-    if (admdate) fillField('admdate', admdate);
+    if (parts.length >= 2) { fillField('fname', parts[0]); fillField('lname', parts.slice(1).join(' ')); }
+    else if (parts.length===1) fillField('fname', parts[0]);
+    setStatus('statusTextBulk', '✅ اطلاعات استخراج شد', 'success');
   }
 
-  // ---- Date Parser ----
-  // Handles: ۱۴۰۳/۰۳/۱۵  or  سوم خرداد ۱۴۰۳  or  ۱۵ خرداد ۱۴۰۳
-  const MONTHS = {
-    'فروردین':1,'اردیبهشت':2,'خرداد':3,'تیر':4,'مرداد':5,'شهریور':6,
-    'مهر':7,'آبان':8,'آذر':9,'دی':10,'بهمن':11,'اسفند':12
-  };
-  const ORDINALS = {
-    'اول':1,'یکم':1,'دوم':2,'سوم':3,'چهارم':4,'پنجم':5,'ششم':6,'هفتم':7,
-    'هشتم':8,'نهم':9,'دهم':10,'یازدهم':11,'دوازدهم':12,'سیزدهم':13,
-    'چهاردهم':14,'پانزدهم':15,'شانزدهم':16,'هفدهم':17,'هجدهم':18,
-    'نوزدهم':19,'بیستم':20,'بیست و یکم':21,'بیست و دوم':22,'بیست و سوم':23,
-    'بیست و چهارم':24,'بیست و پنجم':25,'بیست و ششم':26,'بیست و هفتم':27,
-    'بیست و هشتم':28,'بیست و نهم':29,'سی ام':30,'سی و یکم':31
-  };
+  const MONTHS = {'فروردین':1,'اردیبهشت':2,'خرداد':3,'تیر':4,'مرداد':5,'شهریور':6,'مهر':7,'آبان':8,'آذر':9,'دی':10,'بهمن':11,'اسفند':12};
+  const ORDINALS = {'اول':1,'یکم':1,'دوم':2,'سوم':3,'چهارم':4,'پنجم':5,'ششم':6,'هفتم':7,'هشتم':8,'نهم':9,'دهم':10,'یازدهم':11,'دوازدهم':12,'سیزدهم':13,'چهاردهم':14,'پانزدهم':15,'شانزدهم':16,'هفدهم':17,'هجدهم':18,'نوزدهم':19,'بیستم':20,'بیست و یکم':21,'بیست و دوم':22,'بیست و سوم':23,'بیست و چهارم':24,'بیست و پنجم':25,'بیست و ششم':26,'بیست و هفتم':27,'بیست و هشتم':28,'بیست و نهم':29,'سی‌ام':30,'سی و یکم':31};
 
-  function parseDateFromText(text) {
-    // Numeric: ۱۴۰۳/۰۳/۱۵ or 1403/03/15
+  function parseDateText(text) {
     const numMatch = text.match(/([\d۰-۹]{4})\s*[\/\-]\s*([\d۰-۹]{1,2})\s*[\/\-]\s*([\d۰-۹]{1,2})/);
-    if (numMatch) {
-      return toEnglishNum(numMatch[1]) + '/' +
-             toEnglishNum(numMatch[2]).padStart(2,'0') + '/' +
-             toEnglishNum(numMatch[3]).padStart(2,'0');
-    }
-    // Ordinal day + month + year: سوم خرداد ۱۴۰۳
-    for (const [ord, ordNum] of Object.entries(ORDINALS)) {
-      for (const [mon, monNum] of Object.entries(MONTHS)) {
+    if (numMatch) return toEN(numMatch[1])+'/'+toEN(numMatch[2]).padStart(2,'0')+'/'+toEN(numMatch[3]).padStart(2,'0');
+    for (const [ord,ordNum] of Object.entries(ORDINALS)) {
+      for (const [mon,monNum] of Object.entries(MONTHS)) {
         if (text.includes(ord) && text.includes(mon)) {
-          const yearMatch = text.match(/([\d۰-۹]{4})/);
-          const year = yearMatch ? toEnglishNum(yearMatch[1]) : '';
-          return year + '/' + String(monNum).padStart(2,'0') + '/' + String(ordNum).padStart(2,'0');
+          const y = text.match(/([\d۰-۹]{4})/);
+          return (y?toEN(y[1]):'') + '/' + String(monNum).padStart(2,'0') + '/' + String(ordNum).padStart(2,'0');
         }
       }
     }
-    // Numeric day + month name + year: ۱۵ خرداد ۱۴۰۳
-    const dayMonYear = text.match(/([\d۰-۹]{1,2})\s+(فروردین|اردیبهشت|خرداد|تیر|مرداد|شهریور|مهر|آبان|آذر|دی|بهمن|اسفند)\s+([\d۰-۹]{4})/);
-    if (dayMonYear) {
-      return toEnglishNum(dayMonYear[3]) + '/' +
-             String(MONTHS[dayMonYear[2]]).padStart(2,'0') + '/' +
-             toEnglishNum(dayMonYear[1]).padStart(2,'0');
-    }
+    const dm = text.match(/([\d۰-۹]{1,2})\s+(فروردین|اردیبهشت|خرداد|تیر|مرداد|شهریور|مهر|آبان|آذر|دی|بهمن|اسفند)\s+([\d۰-۹]{4})/);
+    if (dm) return toEN(dm[3])+'/'+String(MONTHS[dm[2]]).padStart(2,'0')+'/'+toEN(dm[1]).padStart(2,'0');
     return null;
   }
 
-  function toEnglishNum(str) {
-    return String(str).replace(/[۰-۹]/g, d => d.charCodeAt(0) - '۰'.charCodeAt(0));
+  function toEN(str) { return String(str).replace(/[۰-۹]/g, d => d.charCodeAt(0)-'۰'.charCodeAt(0)); }
+
+  function blobToBase64(blob) {
+    return new Promise((res,rej) => {
+      const r = new FileReader();
+      r.onload = () => res(r.result);
+      r.onerror = rej;
+      r.readAsDataURL(blob);
+    });
   }
 
   function fillField(id, val) {
     const el = document.getElementById(id);
-    if (!el) return;
+    if (!el || !val) return;
     el.value = val;
     el.classList.add('filled');
   }
 
-  // ---- Save / Clear ----
+  function setStatus(id, msg, type) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.textContent = msg;
+    el.className = 'status-text ' + (type||'');
+  }
+
   function saveRecord() {
     const rec = {
       fname: document.getElementById('fname').value.trim(),
@@ -432,7 +460,6 @@
     renderTable();
     clearForm();
     showToast('✅ ردیف ذخیره شد');
-    if (currentMode === 'chat') { currentStep = 0; showStep(0); }
   }
 
   function clearForm() {
@@ -440,35 +467,31 @@
       const el = document.getElementById(id);
       el.value = ''; el.classList.remove('filled');
     });
-    if (currentMode === 'chat') { currentStep = 0; showStep(0); }
+    if (currentMode==='chat') { currentStep=0; showStep(0); }
   }
 
-  function deleteRecord(i) { records.splice(i, 1); renderTable(); }
+  function deleteRecord(i) { records.splice(i,1); renderTable(); }
 
   function renderTable() {
     const tbody = document.getElementById('tableBody');
     document.getElementById('countBadge').textContent = records.length;
-    if (!records.length) {
-      tbody.innerHTML = '<tr><td colspan="9" class="empty-state">هنوز اطلاعاتی ثبت نشده</td></tr>';
-      return;
-    }
-    tbody.innerHTML = records.map((r, i) => `
-      <tr>
-        <td>${i+1}</td><td>${r.fname}</td><td>${r.lname}</td><td>${r.fathername}</td>
-        <td>${r.natid}</td><td>${r.fileno}</td><td>${r.doctor}</td><td>${r.admdate}</td>
-        <td><button class="delete-btn" onclick="deleteRecord(${i})">✕</button></td>
-      </tr>`).join('');
+    if (!records.length) { tbody.innerHTML='<tr><td colspan="9" class="empty-state">هنوز اطلاعاتی ثبت نشده</td></tr>'; return; }
+    tbody.innerHTML = records.map((r,i) => `<tr>
+      <td>${i+1}</td><td>${r.fname}</td><td>${r.lname}</td><td>${r.fathername}</td>
+      <td>${r.natid}</td><td>${r.fileno}</td><td>${r.doctor}</td><td>${r.admdate}</td>
+      <td><button class="delete-btn" onclick="deleteRecord(${i})">✕</button></td>
+    </tr>`).join('');
   }
 
   function exportExcel() {
     if (!records.length) { showToast('اطلاعاتی برای خروجی وجود ندارد'); return; }
     const data = [
       ['نام','نام خانوادگی','نام پدر','کد ملی','شماره پرونده','نام پزشک','تاریخ پذیرش'],
-      ...records.map(r => [r.fname, r.lname, r.fathername, r.natid, r.fileno, r.doctor, r.admdate])
+      ...records.map(r=>[r.fname,r.lname,r.fathername,r.natid,r.fileno,r.doctor,r.admdate])
     ];
     const wb = XLSX.utils.book_new();
     const ws = XLSX.utils.aoa_to_sheet(data);
-    ws['!cols'] = [12,14,12,14,14,16,14].map(w => ({ wch: w }));
+    ws['!cols'] = [12,14,12,14,14,16,14].map(w=>({wch:w}));
     XLSX.utils.book_append_sheet(wb, ws, 'بیماران');
     XLSX.writeFile(wb, 'اطلاعات_بیماران.xlsx');
     showToast('📥 فایل Excel دانلود شد');
@@ -478,11 +501,11 @@
     const t = document.getElementById('toast');
     t.textContent = msg;
     t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 2500);
+    setTimeout(()=>t.classList.remove('show'), 2500);
   }
 
   // Init
-  initChatMode();
+  setMode('chat');
 </script>
 </body>
 </html>
